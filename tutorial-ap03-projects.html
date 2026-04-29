@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AP03. Projects &middot; Tutoriais</title>
+<title>AP03. Projects &middot; Delta Skills</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-  /* ===== Palettes (inline from palettes.css) ===== */
+  /* ============ Palettes (inline) ============ */
   [data-palette="forest"] {
     --bg: #F5F0EB; --white: #FFFFFF; --panel: #FFFFFF;
     --accent: #5C6C51; --accent2: #1F3331;
     --accent-light: #EDE8E2; --accent-lighter: #F0EBE4; --accent-border: #DDD8D2; --accent-text: #1F3331;
     --blue: #2B5B8E; --blue-light: #EAF1F7; --blue-border: #C8D8E5; --blue-text: #1A3D5F;
     --green: #4F6B3E; --green-light: #ECF2E5; --green-border: #C6D4B3; --green-text: #33491F;
-    --gold: #C8A968; --text: #1A1A1A; --text2: #4A4A4A; --text3: #7A7A7A;
+    --gold: #C8A968;
+    --text: #1A1A1A; --text2: #4A4A4A; --text3: #7A7A7A;
     --border: #EDE8E2; --border2: #DDD8D2;
     --ficha-td1-bg: #FAF8F4; --ficha-th-bg: #EDE8E2;
     --card-num: #C8D1C0; --card-tag-bg: #5C6C51; --card-tag-fg: #F5F0EB;
@@ -39,7 +40,8 @@
     --accent-light: #2A433F; --accent-lighter: #223532; --accent-border: #385652; --accent-text: #E3E6DE;
     --blue: #8BB3D9; --blue-light: #1E3147; --blue-border: #385D80; --blue-text: #C4DBEF;
     --green: #A8C68C; --green-light: #1F3322; --green-border: #3F5D35; --green-text: #D4E5BF;
-    --gold: #D1AA53; --text: #ECEAE0; --text2: #C7CEC1; --text3: #8A938F;
+    --gold: #D1AA53;
+    --text: #ECEAE0; --text2: #C7CEC1; --text3: #8A938F;
     --border: #2A433F; --border2: #385652;
     --ficha-td1-bg: #1F3331; --ficha-th-bg: #223532;
     --card-num: #385652; --card-tag-bg: #D1AA53; --card-tag-fg: #141F1D;
@@ -62,7 +64,8 @@
     --accent-light: #E7DFCE; --accent-lighter: #EFE8D7; --accent-border: #D8CFB7; --accent-text: #1F3331;
     --blue: #2B5B8E; --blue-light: #E5EBF3; --blue-border: #B8C9DC; --blue-text: #1A3D5F;
     --green: #4F6B3E; --green-light: #E5EBD8; --green-border: #B8CCA0; --green-text: #33491F;
-    --gold: #B8933E; --text: #1A1A1A; --text2: #4A4538; --text3: #8A7F64;
+    --gold: #B8933E;
+    --text: #1A1A1A; --text2: #4A4538; --text3: #8A7F64;
     --border: #E1D8C2; --border2: #D1C7AD;
     --ficha-td1-bg: #F5EED9; --ficha-th-bg: #E7DFCE;
     --card-num: #C7BB9D; --card-tag-bg: #1F3331; --card-tag-fg: #F2ECE0;
@@ -79,6 +82,7 @@
     --shadow-xs: 0 1px 2px rgba(31,51,49,0.06);
     --shadow-sm: 0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05);
   }
+
   .palette-switch {
     position: fixed; top: 12px; right: 12px; z-index: 100;
     display: inline-flex; gap: 3px;
@@ -90,14 +94,27 @@
   .palette-switch button {
     font: inherit; font-size: 0.6rem; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.1em;
-    padding: 5px 10px; border-radius: 999px; border: none;
-    background: transparent; color: var(--text3);
+    padding: 5px 10px; border-radius: 999px;
+    border: none; background: transparent; color: var(--text3);
     cursor: pointer; transition: all 160ms ease;
   }
   .palette-switch button:hover { color: var(--text); }
   .palette-switch button.is-active { background: var(--accent2); color: var(--bg); }
 
-  /* ===== Tutorial layout ===== */
+  /* ============ Step-card (Scribehow) ============ */
+  .step-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 16px; box-shadow: var(--shadow-sm); }
+  .step-card-head { background: var(--accent2); padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
+  .step-card-num { background: var(--gold); color: var(--accent2); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; padding: 3px 9px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0; }
+  .step-card-title { color: var(--bg); font-size: 0.95rem; font-weight: 600; }
+  .step-card-body { padding: 16px 18px; }
+  .step-card-desc { font-size: 0.92rem; color: var(--text); line-height: 1.55; margin: 0 0 14px; }
+  .step-card-desc strong { color: var(--accent2); font-weight: 700; }
+  .step-card-img-wrap { background: var(--bg); border-radius: 6px; padding: 10px; border: 1px solid var(--border); }
+  .step-card-img-wrap img { width: 100%; display: block; border-radius: 4px; }
+  .step-card-caption { font-size: 0.78rem; color: var(--text3); font-style: italic; margin: 8px 0 0; text-align: center; }
+  .step-card-textonly .step-card-body { padding-bottom: 16px; }
+
+  /* ============ Tutorial styles ============ */
   body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
   .layout{display:flex;min-height:100vh}
   .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
@@ -148,12 +165,6 @@
   .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
   .ficha-table tr:last-child td{border-bottom:none}
   .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
-  .instructions{display:flex;flex-direction:column;gap:4px;margin:14px 0}
-  .inst{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:flex-start;padding:11px 14px;background:var(--panel);border-radius:8px;border:1px solid var(--border);box-shadow:var(--shadow-xs)}
-  .inst-num{font-size:0.58rem;font-weight:700;color:#fff;background:var(--green);min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-  .inst-text{font-size:0.78rem;color:var(--text);line-height:1.55;flex:1;min-width:0}
-  .inst-text strong{font-weight:700;color:var(--accent2)}
-  .inst-text .time{color:var(--text3);font-size:0.7rem;font-weight:500}
   .copy-wrap{margin:14px 0 16px}
   .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
   .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:20px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
@@ -200,8 +211,8 @@
   <nav class="sidebar">
     <div class="sidebar-header">
       <a class="back-link" href="index.html">&#8592; Tutoriais</a>
-      <h2>AP03 &mdash; Projects</h2>
-      <p>Bloco 04 &middot; Como usar AI</p>
+      <h2>Projects</h2>
+      <p>AP03 &middot; Como usar AI</p>
     </div>
     <div class="nav-group"><div class="nav-group-title">Início</div>
       <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
@@ -215,13 +226,15 @@
       <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Campos do Project<span class="ni-check">&#10003;</span></a>
       <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> System Prompt<span class="ni-check">&#10003;</span></a>
       <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> O que observar<span class="ni-check">&#10003;</span></a>
-      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> Pergunta de teste<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> Pergunta da demo<span class="ni-check">&#10003;</span></a>
     </div>
     <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
       <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> O que você vai fazer<span class="ni-check">&#10003;</span></a>
       <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> Passo a passo<span class="ni-check">&#10003;</span></a>
-      <a class="nav-item" data-section="sec-step10" onclick="showSection('sec-step10')"><span class="ni-num">10</span> Template das instruções<span class="ni-check">&#10003;</span></a>
-      <a class="nav-item" data-section="sec-step11" onclick="showSection('sec-step11')"><span class="ni-num">11</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step10" onclick="showSection('sec-step10')"><span class="ni-num">10</span> Nome e objetivo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step11" onclick="showSection('sec-step11')"><span class="ni-num">11</span> Template das instruções<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step12" onclick="showSection('sec-step12')"><span class="ni-num">12</span> Pergunta de teste<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step13" onclick="showSection('sec-step13')"><span class="ni-num">13</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
     </div>
     <div class="sidebar-progress">
       <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
@@ -237,15 +250,16 @@
       <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
       <div class="sec-desc">AP03 &mdash; Projects</div>
 
-      <p class="lead-text">Terceira atividade do bloco <strong>"Como usar AI"</strong>. Você vai criar o seu próprio assistente de AI personalizado para o dia a dia do trabalho &mdash; um Project no Claude configurado com o contexto da sua empresa, do seu cargo e das ferramentas que você aprendeu no Delta Board.</p>
+      <p class="lead-text">Terceira atividade do bloco <strong>Como usar AI</strong>. Você vai criar o <strong>seu próprio assistente de AI personalizado</strong> no Claude Projects &mdash; configurado com o contexto da sua empresa, do seu cargo e dos documentos que você gerou nas atividades anteriores.</p>
 
       <div class="overview-card">
         <h3>Ficha técnica</h3>
         <table class="ficha-table"><tbody>
           <tr><td>Tipo</td><td>Demonstração + Atividade Prática</td></tr>
           <tr><td>Duração</td><td>6 minutos</td></tr>
+          <tr><td>Técnica de AI</td><td>Memória permanente via System Prompt + base de conhecimento</td></tr>
           <tr><td>Ferramenta</td><td>Claude Projects</td></tr>
-          <tr><td>Bloco</td><td>04 &mdash; Como usar AI &middot; Terceira atividade</td></tr>
+          <tr><td>Insumos</td><td>Outputs das atividades 1 (Matrix Kai-Fu Lee) e 2 (Pesquisa Profunda)</td></tr>
         </tbody></table>
       </div>
 
@@ -259,9 +273,9 @@
     <div class="section" id="sec-step1">
       <span class="section-badge badge-intro">Introdução</span>
       <div class="sec-title"><span class="snum">01.</span> Objetivo de aprendizagem</div>
-      <div class="sec-desc">O que você vai ter ao final</div>
+      <div class="sec-desc">O que você sai sabendo ao fim desta aula</div>
 
-      <p class="lead-text">Criar o seu próprio assistente de AI personalizado para o dia a dia do trabalho &mdash; um Project no Claude configurado com o contexto da sua empresa, do seu cargo e das ferramentas que você aprendeu no Delta Board. Você vai sair desta atividade com um <strong>assistente pronto para usar na segunda-feira</strong>.</p>
+      <p class="lead-text">Criar o seu próprio <strong>assistente de AI personalizado</strong> para o dia a dia do trabalho &mdash; um Project no Claude configurado com o contexto da sua empresa, do seu cargo e das ferramentas que você aprendeu no Delta Board. Você vai sair desta atividade com um assistente <strong>pronto para usar na segunda-feira</strong>.</p>
 
       <div class="nav-buttons">
         <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
@@ -275,19 +289,19 @@
       <div class="sec-title"><span class="snum">02.</span> Conceito</div>
       <div class="sec-desc">Projects &mdash; seu assistente com memória permanente</div>
 
-      <p class="lead-text">Uma conversa normal no Claude começa do zero toda vez. Você precisa reexplicar quem você é, onde trabalha, o que faz. Um <strong>Project resolve isso:</strong> você configura o contexto uma vez, e o Claude carrega tudo automaticamente em cada nova conversa dentro daquele espaço.</p>
+      <p class="lead-text">Uma conversa normal no Claude começa <strong>do zero toda vez</strong>. Você precisa reexplicar quem você é, onde trabalha, o que faz. Um Project resolve isso: você configura o contexto uma vez, e o Claude carrega tudo automaticamente em cada nova conversa dentro daquele espaço.</p>
 
-      <p class="lead-text">É a diferença entre contratar um novo freelancer toda semana e ter um <strong>assistente fixo</strong> que já conhece a sua empresa, o seu setor e as suas prioridades.</p>
+      <p class="lead-text">É a diferença entre <strong>contratar um novo freelancer toda semana</strong> e <strong>ter um assistente fixo</strong> que já conhece a sua empresa, o seu setor e as suas prioridades.</p>
 
       <div class="overview-card">
-        <h3>O que entra no seu Project hoje</h3>
+        <h3>Nesta atividade você vai alimentar o Project com 2 documentos</h3>
         <ul>
-          <li>A análise de oportunidades de AI da sua rotina (output da primeira atividade prática)</li>
-          <li>O relatório de como o seu segmento de mercado está usando AI (output da segunda atividade prática)</li>
+          <li>A análise de oportunidades de AI da sua rotina (output da AP01)</li>
+          <li>O relatório de como o seu segmento de mercado está usando AI (output da AP02)</li>
         </ul>
       </div>
 
-      <p class="lead-text">Com isso, o seu assistente já nasce sabendo onde você trabalha, o que você faz e o que está acontecendo no seu mercado.</p>
+      <p class="lead-text">Com isso, o seu assistente <strong>já nasce sabendo</strong> onde você trabalha, o que você faz e o que está acontecendo no seu mercado.</p>
 
       <div class="nav-buttons">
         <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
@@ -299,9 +313,9 @@
     <div class="section" id="sec-step3">
       <span class="section-badge badge-demo">Demonstração</span>
       <div class="sec-title demo"><span class="snum">03.</span> O que você vai ver</div>
-      <div class="sec-desc">Criação de um Project do zero ao vivo</div>
+      <div class="sec-desc">Criação de um Project do zero, com instruções configuradas ao vivo</div>
 
-      <p class="lead-text">Criação de um Project do zero no Claude, com configuração das instruções do assistente ao vivo. O foco é mostrar como escrever um <strong>System Prompt</strong> que transforma o Claude de assistente genérico em assistente especializado no contexto de quem usa.</p>
+      <p class="lead-text">Criação de um Project do zero no Claude, com configuração das instruções do assistente <strong>ao vivo</strong>. O foco é mostrar como escrever um System Prompt que transforma o Claude de assistente genérico em <strong>assistente especializado</strong> no contexto de quem usa.</p>
 
       <div class="nav-buttons">
         <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
@@ -313,20 +327,20 @@
     <div class="section" id="sec-step4">
       <span class="section-badge badge-demo">Demonstração</span>
       <div class="sec-title demo"><span class="snum">04.</span> Campos preenchidos na criação do Project</div>
-      <div class="sec-desc">Os dois campos iniciais que orientam o Claude</div>
+      <div class="sec-desc">Os dois campos do formulário inicial do Claude Projects</div>
 
       <div class="copy-wrap">
         <span class="copy-label">No que você está trabalhando? (nome do Project)</span>
-        <div class="copy-block" id="demo-name">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-name-text').textContent)">Copiar</button>
-<span id="demo-name-text">Assistente Executivo &mdash; Delta Board</span></div>
+        <div class="copy-block" id="demo-nome">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-nome-text').textContent)">Copiar</button>
+<span id="demo-nome-text">Assistente Executivo &mdash; Delta Board</span></div>
       </div>
 
-      <div class="copy-wrap" style="margin-top:22px">
+      <div class="copy-wrap" style="margin-top:18px">
         <span class="copy-label">O que você quer realizar?</span>
-        <div class="copy-block" id="demo-goal">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-goal-text').textContent)">Copiar</button>
-<span id="demo-goal-text">Quero um assistente de AI que me ajude no dia a dia do trabalho como Diretor de Operações de uma empresa de logística. Ele deve conhecer meu setor, minhas responsabilidades e as ferramentas de AI que aprendi no Delta Board para me dar respostas diretas e contextualizadas.</span></div>
+        <div class="copy-block" id="demo-objetivo">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-objetivo-text').textContent)">Copiar</button>
+<span id="demo-objetivo-text">Quero um assistente de AI que me ajude no dia a dia do trabalho como Diretor de Operações de uma empresa de logística. Ele deve conhecer meu setor, minhas responsabilidades e as ferramentas de AI que aprendi no Delta Board para me dar respostas diretas e contextualizadas.</span></div>
       </div>
 
       <div class="nav-buttons">
@@ -339,22 +353,18 @@
     <div class="section" id="sec-step5">
       <span class="section-badge badge-demo">Demonstração</span>
       <div class="sec-title demo"><span class="snum">05.</span> System Prompt da demonstração</div>
-      <div class="sec-desc">A identidade e as regras do assistente</div>
+      <div class="sec-desc">As instruções que o professor cola no Project ao vivo</div>
 
       <div class="copy-wrap">
-        <span class="copy-label">System Prompt &mdash; demonstração</span>
-        <div class="copy-block" id="demo-sysprompt">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-sysprompt-text').textContent)">Copiar</button>
-<span id="demo-sysprompt-text">Você é meu assistente executivo de AI, especializado em
-me ajudar no dia a dia do trabalho com foco em produtividade,
-tomada de decisão e aplicação prática de inteligência artificial.
+        <span class="copy-label">System Prompt &mdash; Assistente Executivo (logística)</span>
+        <div class="copy-block" id="demo-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-prompt-text').textContent)">Copiar</button>
+<span id="demo-prompt-text">Você é meu assistente executivo de AI, especializado em me ajudar no dia a dia do trabalho com foco em produtividade, tomada de decisão e aplicação prática de inteligência artificial.
 
 Contexto sobre mim:
 - Segmento de mercado: logística
 - Cargo: Diretor de Operações
-- Principais responsabilidades: gestão de times, análise de
-  indicadores operacionais, tomada de decisão sobre rotas e
-  recursos, comunicação com clientes e relatórios para o board
+- Principais responsabilidades: gestão de times, análise de indicadores operacionais, tomada de decisão sobre rotas e recursos, comunicação com clientes e relatórios para o board
 
 Ferramentas de AI que uso no meu dia a dia:
 - Claude (Projects, Artefatos, Skills, Cowork, Code)
@@ -363,12 +373,9 @@ Ferramentas de AI que uso no meu dia a dia:
 
 Como me ajudar:
 - Seja direto e executivo &mdash; sem rodeios
-- Quando eu pedir análises, use os documentos deste Project
-  como contexto prioritário
-- Quando eu pedir recomendações de AI, sugira ferramentas
-  que aprendi no Delta Board
-- Se eu não especificar o formato, entregue em bullets
-  e máximo 1 página</span></div>
+- Quando eu pedir análises, use os documentos deste Project como contexto prioritário
+- Quando eu pedir recomendações de AI, sugira ferramentas que aprendi no Delta Board
+- Se eu não especificar o formato, entregue em bullets e máximo 1 página</span></div>
       </div>
 
       <div class="nav-buttons">
@@ -380,14 +387,14 @@ Como me ajudar:
     <!-- 06 -->
     <div class="section" id="sec-step6">
       <span class="section-badge badge-demo">Demonstração</span>
-      <div class="sec-title demo"><span class="snum">06.</span> O que observar na demo</div>
-      <div class="sec-desc">4 padrões importantes</div>
+      <div class="sec-title demo"><span class="snum">06.</span> O que observar</div>
+      <div class="sec-desc">4 sinais visíveis durante a configuração do Project</div>
 
       <ul class="observation-list">
-        <li><strong>Campo "O que você quer realizar?"</strong> &mdash; orienta o Claude na criação do Project. Quanto mais específico, melhor o ponto de partida.</li>
-        <li><strong>System Prompt</strong> &mdash; define a identidade, o contexto e as regras de comportamento do assistente.</li>
-        <li><strong>Especificidade do contexto</strong> &mdash; quanto mais específico (setor, cargo, responsabilidades), mais útil o assistente.</li>
-        <li><strong>Documentos como memória permanente</strong> &mdash; os arquivos adicionados ao Project funcionam como memória permanente. O Claude lê tudo antes de responder.</li>
+        <li><strong>O campo "O que você quer realizar?"</strong> orienta o Claude na criação do Project &mdash; quanto mais específico, melhor o ponto de partida.</li>
+        <li><strong>O System Prompt</strong> define a identidade, o contexto e as regras de comportamento do assistente.</li>
+        <li><strong>Quanto mais específico o contexto</strong> (setor, cargo, responsabilidades), mais útil o assistente.</li>
+        <li><strong>Os documentos adicionados</strong> ao Project funcionam como memória permanente &mdash; o Claude lê tudo antes de responder.</li>
       </ul>
 
       <div class="nav-buttons">
@@ -400,30 +407,18 @@ Como me ajudar:
     <div class="section" id="sec-step7">
       <span class="section-badge badge-demo">Demonstração</span>
       <div class="sec-title demo"><span class="snum">07.</span> Pergunta de teste da demonstração</div>
-      <div class="sec-desc">A mesma pergunta em dois lugares &mdash; respostas completamente diferentes</div>
+      <div class="sec-desc">A mesma pergunta no chat normal e dentro do Project</div>
 
-      <p class="lead-text">A mesma pergunta é feita em dois lugares para mostrar a diferença. Primeiro em um <strong>chat normal</strong> (fora do Project), depois dentro do <strong>Project recém-criado</strong>, com os documentos carregados.</p>
+      <p class="lead-text">A mesma pergunta é feita em dois lugares para mostrar a diferença. Primeiro, em um <strong>chat normal</strong> (fora do Project). Depois, dentro do <strong>Project</strong> recém-criado, com os documentos carregados.</p>
 
       <div class="copy-wrap">
-        <span class="copy-label">Pergunta de teste &mdash; chat normal</span>
-        <div class="copy-block" id="demo-q1">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-q1-text').textContent)">Copiar</button>
-<span id="demo-q1-text">Quais são os maiores riscos de um concorrente do meu setor
-me ultrapassar por causa de AI nos próximos 12 meses?</span></div>
+        <span class="copy-label">Pergunta &mdash; chat normal e Project</span>
+        <div class="copy-block" id="demo-pergunta">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-pergunta-text').textContent)">Copiar</button>
+<span id="demo-pergunta-text">Quais são os maiores riscos de um concorrente do meu setor me ultrapassar por causa de AI nos próximos 12 meses?</span></div>
       </div>
 
-      <div class="copy-wrap" style="margin-top:22px">
-        <span class="copy-label">Mesma pergunta &mdash; dentro do Project</span>
-        <div class="copy-block" id="demo-q2">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-q2-text').textContent)">Copiar</button>
-<span id="demo-q2-text">Quais são os maiores riscos de um concorrente do meu setor
-me ultrapassar por causa de AI nos próximos 12 meses?</span></div>
-      </div>
-
-      <div class="insight-box">
-        <div class="insight-label">O que esperar</div>
-        <p>O chat normal entrega algo <strong>genérico</strong>. O Project entrega uma análise <strong>ancorada no setor</strong>, nos casos reais do relatório da segunda atividade e no contexto do cargo.</p>
-      </div>
+      <p class="lead-text">A mesma pergunta. <strong>Respostas completamente diferentes.</strong> O chat normal entrega algo genérico. O Project entrega uma análise ancorada no setor de logística, nos casos reais do relatório da AP02 e no contexto do cargo de Diretor de Operações.</p>
 
       <div class="nav-buttons">
         <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
@@ -435,9 +430,9 @@ me ultrapassar por causa de AI nos próximos 12 meses?</span></div>
     <div class="section" id="sec-step8">
       <span class="section-badge badge-pratica">Atividade Prática</span>
       <div class="sec-title pratica"><span class="snum">08.</span> O que você vai fazer</div>
-      <div class="sec-desc">Agora é a sua vez &mdash; com o seu contexto real</div>
+      <div class="sec-desc">Sua vez &mdash; criar o seu Project com o seu contexto real</div>
 
-      <p class="lead-text">Criar o seu próprio Project no Claude com o seu contexto real &mdash; o seu <strong>cargo</strong>, a sua <strong>empresa</strong>, o seu <strong>segmento de mercado</strong>.</p>
+      <p class="lead-text">Criar o <strong>seu próprio Project no Claude</strong> com o seu contexto real, configurar as instruções do assistente, adicionar os documentos das atividades práticas anteriores e testar com uma pergunta para ver a diferença em relação a um chat normal.</p>
 
       <div class="tool-links">
         <a class="tool-link" href="https://claude.ai" target="_blank"><div><div class="tl-name">Claude</div><div class="tl-url">claude.ai</div></div></a>
@@ -453,48 +448,264 @@ me ultrapassar por causa de AI nos próximos 12 meses?</span></div>
     <div class="section" id="sec-step9">
       <span class="section-badge badge-pratica">Atividade Prática</span>
       <div class="sec-title pratica"><span class="snum">09.</span> Passo a passo</div>
-      <div class="sec-desc">4 passos em 6 minutos</div>
+      <div class="sec-desc">19 passos para criar o seu Project no Claude</div>
 
-      <div class="instructions">
-        <div class="inst"><div class="inst-num">1</div><div class="inst-text"><strong>Crie o Project.</strong> <span class="time">(1 min)</span><br>Acesse <a href="https://claude.ai" target="_blank">claude.ai</a> e clique em <strong>Projects</strong> no menu lateral. Clique em <strong>Novo Project</strong> e preencha os dois campos com as sugestões abaixo.</div></div>
-        <div class="inst"><div class="inst-num">2</div><div class="inst-text"><strong>Configure as instruções.</strong> <span class="time">(2 min)</span><br>Na área de instruções do Project, cole o template da seção 10 com as variáveis substituídas pelo seu contexto real.</div></div>
-        <div class="inst"><div class="inst-num">3</div><div class="inst-text"><strong>Adicione os documentos.</strong> <span class="time">(2 min)</span><br>Na área de conhecimento do Project, adicione: o output da primeira atividade prática (sua análise de oportunidades de AI com a Matrix Kai-Fu Lee) e o output da segunda atividade prática (seu relatório de como o seu segmento está usando AI).</div></div>
-        <div class="inst"><div class="inst-num">4</div><div class="inst-text"><strong>Teste o assistente.</strong> <span class="time">(1 min)</span><br>Faça a mesma pergunta em dois lugares e compare as respostas. Use os prompts copiáveis logo abaixo.</div></div>
+      <div class="step-card step-card-textonly">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 01</span>
+          <span class="step-card-title">Acesse o Claude</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Em uma nova aba do navegador, acesse <strong>claude.ai</strong>.</p>
+        </div>
       </div>
 
-      <div class="copy-wrap" style="margin-top:18px">
-        <span class="copy-label">Sugestão &mdash; nome do Project</span>
-        <div class="copy-block" id="user-name">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('user-name-text').textContent)">Copiar</button>
-<span id="user-name-text">Assistente Executivo &mdash; [seu nome ou empresa]</span></div>
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 02</span>
+          <span class="step-card-title">Abra o menu lateral</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No canto superior esquerdo, abra o <strong>menu lateral</strong> do Claude.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-02.jpeg" alt="Passo 02 — Abra o menu lateral" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 02 &mdash; Abra o menu lateral do Claude</p>
+        </div>
       </div>
 
-      <div class="copy-wrap" style="margin-top:22px">
-        <span class="copy-label">Sugestão &mdash; o que você quer realizar?</span>
-        <div class="copy-block" id="user-goal">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('user-goal-text').textContent)">Copiar</button>
-<span id="user-goal-text">Quero um assistente de AI que me ajude no dia a dia do trabalho como [SEU CARGO] de uma empresa de [SEU SEGMENTO DE MERCADO]. Ele deve conhecer meu setor, minhas responsabilidades e as ferramentas de AI que aprendi no Delta Board para me dar respostas diretas e contextualizadas.</span></div>
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 03</span>
+          <span class="step-card-title">Selecione "Projetos"</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No menu lateral, clique em <strong>Projetos</strong>.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-03.jpeg" alt="Passo 03 — Selecione Projetos" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 03 &mdash; Selecione "Projetos" no menu</p>
+        </div>
       </div>
 
-      <div class="copy-wrap" style="margin-top:22px">
-        <span class="copy-label">Pergunta de teste &mdash; chat normal</span>
-        <div class="copy-block" id="user-q1">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('user-q1-text').textContent)">Copiar</button>
-<span id="user-q1-text">Quais são os maiores riscos de um concorrente do meu setor
-me ultrapassar por causa de AI nos próximos 12 meses?</span></div>
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 04</span>
+          <span class="step-card-title">Clique em "Novo projeto"</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na tela de Projetos, clique no botão <strong>+ Novo projeto</strong>.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-04.jpeg" alt="Passo 04 — Novo projeto" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 04 &mdash; Clique em "+ Novo projeto"</p>
+        </div>
       </div>
 
-      <div class="copy-wrap" style="margin-top:22px">
-        <span class="copy-label">Mesma pergunta &mdash; dentro do Project</span>
-        <div class="copy-block" id="user-q2">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('user-q2-text').textContent)">Copiar</button>
-<span id="user-q2-text">Quais são os maiores riscos de um concorrente do meu setor
-me ultrapassar por causa de AI nos próximos 12 meses?</span></div>
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 05</span>
+          <span class="step-card-title">Copie o nome sugerido desta página</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Volte a esta página do tutorial e copie o nome sugerido para o seu Project (substituindo <strong>[seu nome ou empresa]</strong> pelo seu contexto real).</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-05.jpeg" alt="Passo 05 — Copie o nome sugerido" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 05 &mdash; Copie o nome sugerido do tutorial</p>
+        </div>
       </div>
 
-      <div class="tip-box">
-        <div class="tip-label">Observe a diferença</div>
-        <p>O chat normal entrega uma resposta genérica. O Project entrega uma análise <strong>ancorada no seu setor</strong>, nos casos reais que você pesquisou e no seu contexto de cargo.</p>
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 06</span>
+          <span class="step-card-title">Cole o nome no campo "No que você está trabalhando?"</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No formulário do Claude, clique no campo <strong>No que você está trabalhando?</strong> e cole o nome copiado.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-06.jpeg" alt="Passo 06 — Cole o nome no campo" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 06 &mdash; Cole o nome no campo</p>
+        </div>
+      </div>
+
+      <div class="step-card step-card-textonly">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 07</span>
+          <span class="step-card-title">Ajuste o nome com seu contexto</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Substitua <strong>[seu nome ou empresa]</strong> pelo seu nome ou pelo nome da sua empresa.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 08</span>
+          <span class="step-card-title">Copie a descrição do objetivo desta página</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Volte ao tutorial e copie o texto sugerido para o campo <strong>O que você quer realizar?</strong>.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-08.jpeg" alt="Passo 08 — Copie a descrição do objetivo" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 08 &mdash; Copie a descrição do objetivo</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 09</span>
+          <span class="step-card-title">Cole e ajuste a descrição do objetivo</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Claude, cole o texto no campo <strong>O que você quer realizar?</strong> e substitua <strong>[SEU CARGO]</strong> e <strong>[SEU SEGMENTO DE MERCADO]</strong> pelo seu contexto real.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-09.webp" alt="Passo 09 — Personalize o objetivo" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 09 &mdash; Cole e personalize a descrição</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 10</span>
+          <span class="step-card-title">Clique em "Criar projeto"</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Clique no botão <strong>Criar projeto</strong> para inicializar o Project.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-10.jpeg" alt="Passo 10 — Criar projeto" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 10 &mdash; Clique em "Criar projeto"</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 11</span>
+          <span class="step-card-title">Abra as instruções do Project</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Project recém-criado, clique no ícone <strong>Editar Instruções</strong> na seção de Instruções.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-11.jpeg" alt="Passo 11 — Editar instruções" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 11 &mdash; Clique no ícone "Editar Instruções"</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 12</span>
+          <span class="step-card-title">Volte ao tutorial e localize o template das instruções</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Nesta página, vá até a seção <strong>11. Template das instruções do Project</strong>.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-12.jpeg" alt="Passo 12 — Localize o template das instruções" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 12 &mdash; Localize a seção do template no tutorial</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 13</span>
+          <span class="step-card-title">Copie o System Prompt do template</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Clique em <strong>Copiar</strong> no bloco do template para levar o System Prompt para a sua área de transferência.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-13.jpeg" alt="Passo 13 — Copie o System Prompt" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 13 &mdash; Copie o System Prompt</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 14</span>
+          <span class="step-card-title">Cole no Claude e ajuste com seu contexto</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Claude, cole o template no campo de instruções e substitua as variáveis <strong>[SEU SEGMENTO DE MERCADO]</strong>, <strong>[SEU CARGO]</strong> e <strong>[SUAS 3 A 5 PRINCIPAIS RESPONSABILIDADES NO DIA A DIA]</strong> com o seu contexto real.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-14.webp" alt="Passo 14 — Personalize as instruções" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 14 &mdash; Cole e personalize as instruções</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 15</span>
+          <span class="step-card-title">Salve as instruções</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Clique em <strong>Salvar instruções</strong> para que o Project passe a usar esse System Prompt.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-15.jpeg" alt="Passo 15 — Salvar instruções" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 15 &mdash; Clique em "Salvar instruções"</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 16</span>
+          <span class="step-card-title">Adicione os documentos do Project</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na seção <strong>Arquivos</strong> do Project, clique no ícone <strong>+</strong> para adicionar conhecimento ao assistente.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-16.jpeg" alt="Passo 16 — Adicionar arquivos" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 16 &mdash; Clique no "+" da seção Arquivos</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 17</span>
+          <span class="step-card-title">Carregue os documentos do aparelho</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Selecione <strong>Carregar do aparelho</strong> e suba os dois arquivos das atividades práticas anteriores: o output da <strong>AP01</strong> (sua análise de oportunidades de AI com a Matrix Kai-Fu Lee) e o output da <strong>AP02</strong> (seu relatório de como o seu segmento está usando AI).</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-17.jpeg" alt="Passo 17 — Carregar do aparelho" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 17 &mdash; Selecione "Carregar do aparelho"</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 18</span>
+          <span class="step-card-title">Volte ao tutorial e copie a pergunta de teste</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na seção <strong>12. Pergunta de teste</strong>, copie a pergunta para usar dentro do Project.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-18.jpeg" alt="Passo 18 — Copie a pergunta de teste" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 18 &mdash; Copie a pergunta de teste</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-card-num">PASSO 19</span>
+          <span class="step-card-title">Cole a pergunta no chat do Project e envie</span>
+        </div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No campo de chat dentro do Project, cole a pergunta e clique no botão de envio. <strong>Observe a resposta</strong> &mdash; ela usa o contexto do seu cargo, do seu setor e dos documentos que você carregou.</p>
+          <div class="step-card-img-wrap">
+            <img src="./prints/ap03-projects/step-19.webp" alt="Passo 19 — Envie a pergunta" loading="lazy" />
+          </div>
+          <p class="step-card-caption">Passo 19 &mdash; Cole e envie a pergunta no chat do Project</p>
+        </div>
       </div>
 
       <div class="nav-buttons">
@@ -506,36 +717,21 @@ me ultrapassar por causa de AI nos próximos 12 meses?</span></div>
     <!-- 10 -->
     <div class="section" id="sec-step10">
       <span class="section-badge badge-pratica">Atividade Prática</span>
-      <div class="sec-title pratica"><span class="snum">10.</span> Template das instruções do Project</div>
-      <div class="sec-desc">Copie, substitua os placeholders e cole no campo de instruções</div>
+      <div class="sec-title pratica"><span class="snum">10.</span> Nome e objetivo do Project (para copiar)</div>
+      <div class="sec-desc">Os dois textos para colar no formulário inicial do Claude</div>
 
       <div class="copy-wrap">
-        <span class="copy-label">Template &mdash; instruções do Project</span>
-        <div class="copy-block" id="user-sysprompt">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('user-sysprompt-text').textContent)">Copiar</button>
-<span id="user-sysprompt-text">Você é meu assistente executivo de AI, especializado em
-me ajudar no dia a dia do trabalho com foco em produtividade,
-tomada de decisão e aplicação prática de inteligência artificial.
+        <span class="copy-label">No que você está trabalhando? (nome do Project)</span>
+        <div class="copy-block" id="user-nome">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('user-nome-text').textContent)">Copiar</button>
+<span id="user-nome-text">Assistente Executivo &mdash; [seu nome ou empresa]</span></div>
+      </div>
 
-Contexto sobre mim:
-- Segmento de mercado: [SEU SEGMENTO DE MERCADO]
-- Cargo: [SEU CARGO]
-- Principais responsabilidades: [SUAS 3 A 5 PRINCIPAIS
-  RESPONSABILIDADES NO DIA A DIA]
-
-Ferramentas de AI que uso no meu dia a dia:
-- Claude (Projects, Artefatos, Skills, Cowork, Code)
-- Pesquisa Profunda para inteligência de mercado
-- Engenharia de Prompt com método PACE
-
-Como me ajudar:
-- Seja direto e executivo &mdash; sem rodeios
-- Quando eu pedir análises, use os documentos deste Project
-  como contexto prioritário
-- Quando eu pedir recomendações de AI, sugira ferramentas
-  que aprendi no Delta Board
-- Se eu não especificar o formato, entregue em bullets
-  e máximo 1 página</span></div>
+      <div class="copy-wrap" style="margin-top:18px">
+        <span class="copy-label">O que você quer realizar?</span>
+        <div class="copy-block" id="user-objetivo">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('user-objetivo-text').textContent)">Copiar</button>
+<span id="user-objetivo-text">Quero um assistente de AI que me ajude no dia a dia do trabalho como [SEU CARGO] de uma empresa de [SEU SEGMENTO DE MERCADO]. Ele deve conhecer meu setor, minhas responsabilidades e as ferramentas de AI que aprendi no Delta Board para me dar respostas diretas e contextualizadas.</span></div>
       </div>
 
       <div class="nav-buttons">
@@ -547,11 +743,70 @@ Como me ajudar:
     <!-- 11 -->
     <div class="section" id="sec-step11">
       <span class="section-badge badge-pratica">Atividade Prática</span>
-      <div class="sec-title pratica"><span class="snum">11.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-title pratica"><span class="snum">11.</span> Template das instruções do Project (para copiar)</div>
+      <div class="sec-desc">Substitua os 3 placeholders pelo seu contexto real</div>
+
+      <div class="copy-wrap">
+        <span class="copy-label">System Prompt &mdash; Template para você</span>
+        <div class="copy-block" id="user-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('user-prompt-text').textContent)">Copiar</button>
+<span id="user-prompt-text">Você é meu assistente executivo de AI, especializado em me ajudar no dia a dia do trabalho com foco em produtividade, tomada de decisão e aplicação prática de inteligência artificial.
+
+Contexto sobre mim:
+- Segmento de mercado: [SEU SEGMENTO DE MERCADO]
+- Cargo: [SEU CARGO]
+- Principais responsabilidades: [SUAS 3 A 5 PRINCIPAIS RESPONSABILIDADES NO DIA A DIA]
+
+Ferramentas de AI que uso no meu dia a dia:
+- Claude (Projects, Artefatos, Skills, Cowork, Code)
+- Pesquisa Profunda para inteligência de mercado
+- Engenharia de Prompt com método PACE
+
+Como me ajudar:
+- Seja direto e executivo &mdash; sem rodeios
+- Quando eu pedir análises, use os documentos deste Project como contexto prioritário
+- Quando eu pedir recomendações de AI, sugira ferramentas que aprendi no Delta Board
+- Se eu não especificar o formato, entregue em bullets e máximo 1 página</span></div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step10')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step12')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="section" id="sec-step12">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">12.</span> Pergunta de teste (para copiar)</div>
+      <div class="sec-desc">Use dentro do Project com os documentos já carregados</div>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Pergunta de teste &mdash; chat normal e Project</span>
+        <div class="copy-block" id="user-pergunta">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('user-pergunta-text').textContent)">Copiar</button>
+<span id="user-pergunta-text">Quais são os maiores riscos de um concorrente do meu setor me ultrapassar por causa de AI nos próximos 12 meses?</span></div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Compare</div>
+        <p>Faça a mesma pergunta em um <strong>chat normal</strong> do Claude (fora do Project) e observe a diferença. O chat normal entrega uma resposta genérica. O Project entrega uma análise ancorada no <strong>seu setor</strong>, nos casos reais que você pesquisou e no seu <strong>contexto de cargo</strong>.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step11')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step13')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="section" id="sec-step13">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">13.</span> O que você tem ao final desta atividade</div>
       <div class="sec-desc">Um assistente de AI personalizado, pronto para usar</div>
 
       <div class="overview-card">
-        <h3>Seu assistente já tem</h3>
+        <h3>Você sai daqui com</h3>
         <ul>
           <li>O contexto da sua empresa e do seu cargo configurado</li>
           <li>O mapeamento de oportunidades de AI da sua rotina como documento</li>
@@ -559,36 +814,13 @@ Como me ajudar:
         </ul>
       </div>
 
-      <p class="lead-text">Este Project vai <strong>crescer ao longo das próximas atividades</strong>. Ao final do Delta Board você terá um assistente completo, pronto para usar no trabalho.</p>
-
-      <div class="overview-card">
-        <h3>Encadeamento &mdash; o que entra neste Project</h3>
-        <table class="ficha-table">
-          <thead><tr><th>Origem</th><th>O que entra no Project</th></tr></thead>
-          <tbody>
-            <tr><td>Atividade prática 01</td><td>Análise de oportunidades de AI na sua rotina (Matrix Kai-Fu Lee)</td></tr>
-            <tr><td>Atividade prática 02</td><td>Relatório de adoção de AI no seu segmento de mercado</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="overview-card">
-        <h3>Encadeamento &mdash; como este Project será usado</h3>
-        <table class="ficha-table">
-          <thead><tr><th>Destino</th><th>Como será usado</th></tr></thead>
-          <tbody>
-            <tr><td>Atividades práticas seguintes</td><td>Todas as próximas atividades podem ser feitas dentro deste Project</td></tr>
-          </tbody>
-        </table>
-      </div>
-
       <div class="insight-box">
         <div class="insight-label">Insight</div>
-        <p>Um <strong>Project bem configurado</strong> deixa de ser uma conversa de AI e vira uma <strong>memória de trabalho permanente</strong>.</p>
+        <p>Este Project vai <strong>crescer ao longo das próximas atividades</strong>. Ao final do Delta Board você terá um <strong>assistente completo</strong>, pronto para usar no trabalho.</p>
       </div>
 
       <div class="nav-buttons">
-        <button class="nav-btn" onclick="showSection('sec-step10')">&#8592; Anterior</button>
+        <button class="nav-btn" onclick="showSection('sec-step12')">&#8592; Anterior</button>
         <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
       </div>
     </div>
@@ -614,7 +846,7 @@ Como me ajudar:
   // Section navigation + progress
   const PKEY = "delta-tut-ap03-projects";
   const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
-  const TOTAL = 12;
+  const TOTAL = 14;
 
   function renderProgress() {
     document.querySelectorAll(".nav-item").forEach(ni => {
@@ -647,6 +879,7 @@ Como me ajudar:
     });
   }
 
+  // Restore last section + initial progress
   (function init(){
     const last = localStorage.getItem(PKEY + ":last") || "sec-home";
     completed.add("sec-home");
